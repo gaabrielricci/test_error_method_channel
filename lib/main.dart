@@ -40,7 +40,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
+
+      //====================================================================//
+      //===========================here call methodchannel=================//
+
       await ConfigsChannel().getUserAgent();
+
+      //====================================================================//
+      //===========================here call methodchannel=================//
+
     });
     super.initState();
   }

@@ -12,8 +12,4 @@ class ConfigsChannel {
   Future<String> getUserAgent() async {
     return await _methodChannel.invokeMethod("user-agent");
   }
-
-  checkForUpdate() {
-    _methodChannel.invokeMethod("check-for-update");
-  }
 }
