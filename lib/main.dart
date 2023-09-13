@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:test_projeto/configurations_channel.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ConfigsChannel().getUserAgent();
   runApp(const MyApp());
 }
 
@@ -23,7 +25,9 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
+
   final String title;
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -38,24 +42,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   @override
-  void initState() {
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-
-      //====================================================================//
-      //===========================here call methodchannel=================//
-
-      await ConfigsChannel().getUserAgent();
-
-      //====================================================================//
-      //===========================here call methodchannel=================//
-
-    });
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
